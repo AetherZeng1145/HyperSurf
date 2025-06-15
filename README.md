@@ -31,7 +31,7 @@
 如果遇见了Bug，或者对我们HyperSurf有建议，您可通过网络方式联系我们
  - HyperSurf官方讨论QQ群：1034660198
  - [@Aether空](https://www.bandbbs.cn/members/1680068/)
- - QQ：2140319099
- - eMail：u9ll033@126.com（国内用户）
-          aetherzeng1145@gmail.com（港澳台及海外用户）
+  - QQ：2140319099
+  - eMail：u9ll033@126.com（国内用户）
+           aetherzeng1145@gmail.com（港澳台及海外用户）
  - [@LR_C](https://www.bandbbs.cn/members/1397083/) QQ:3590283241
