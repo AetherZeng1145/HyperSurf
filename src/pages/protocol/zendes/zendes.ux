@@ -1,0 +1,271 @@
+<template>
+  <div class="container">
+    <div class="header">
+      <div class="back-button" onclick="goBack">
+        <text class="back-arrow">←</text>
+        <text class="back-text">返回</text>
+      </div>
+      <text class="title">镇得斯工作室用户协议</text>
+    </div>
+
+    <div class="content-container">
+      <div class="protocol-content">
+        
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">欢迎使用镇得斯工作室产品</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">本用户协议（以下简称"本协议"）是您（以下简称"用户"）与镇得斯工作室（以下简称"工作室"）之间关于使用工作室开发的各类软件产品的法律协议。请仔细阅读本协议，一旦您使用工作室的任何产品，即表示您已同意接受本协议的所有条款和条件。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">1. 服务内容</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">镇得斯工作室致力于开发高质量的软件应用，包括但不限于HyperSurf浏览器等产品。工作室提供的产品可能处于不同发展阶段（如预览版、测试版、正式版），各版本的功能和稳定性可能有所差异。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">2. 用户资格</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">用户确认，在开始使用本协议涉及的产品时，用户应当具备中华人民共和国法律规定的与用户行为相适应的民事行为能力。若用户不具备前述与用户行为相适应的民事行为能力，则用户及用户的监护人应依照法律规定承担因此而导致的一切后果。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">3. 用户行为规范</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">用户同意将工作室产品用于合法目的，不得利用工作室产品从事任何违反法律法规、政策规章或侵犯他人合法权益的行为。用户在使用过程中应遵守以下规范：不得利用工作室产品从事任何违法犯罪活动；不得对工作室产品进行反向工程、破解、修改或制作衍生作品；不得传播恶意软件、病毒或其他有害代码；不得干扰或破坏工作室产品的正常运行。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">4. 知识产权</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">工作室拥有其开发的所有产品的知识产权，包括但不限于著作权、商标权、专利权等。未经工作室明确授权，用户不得复制、修改、出租、出借、出售、传播工作室产品的任何部分，或利用工作室产品的相关内容创作衍生作品。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">5. 隐私保护</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">工作室尊重用户隐私，承诺按照相关法律法规保护用户个人信息。工作室产品在设计和开发过程中遵循隐私保护原则，尽可能减少对用户个人信息的收集和使用。具体隐私政策将在产品中另行公布。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">6. 免责声明</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">工作室产品按"现状"和"可得到"的状态提供。工作室不对产品的适用性、可靠性、准确性、完整性、及时性作出任何承诺和保证。对于因使用工作室产品而产生的任何直接、间接、偶然、特殊及后续的损害，工作室不承担任何责任。对于预览版和测试版产品，用户应知悉这些版本可能包含错误、漏洞或不稳定因素，使用此类版本产生的任何问题，工作室免责范围将更为宽泛。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">7. 用户反馈</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">用户可以向工作室提交产品使用反馈，包括但不限于bug报告、功能建议等。用户理解并同意，工作室有权使用用户反馈中的任何信息，而无需向用户支付任何费用或承担任何义务。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">8. 协议变更</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">工作室有权根据需要随时修改本协议条款。修改后的协议将在工作室产品中公布，不再另行通知。用户继续使用工作室产品即视为接受修改后的协议。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">9. 协议终止</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">如用户违反本协议的任何条款，工作室有权立即终止本协议，并限制或终止用户使用工作室产品的权利。用户也可以随时停止使用工作室产品来终止本协议。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">10. 法律适用与争议解决</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">本协议的订立、执行和解释及争议的解决均适用中华人民共和国法律。如就本协议内容或其执行发生任何争议，双方应尽量友好协商解决；协商不成时，任何一方均可向工作室所在地有管辖权的人民法院提起诉讼。</text>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div class="footer-text-container">
+            <text class="footer-text">镇得斯工作室</text>
+            <text class="footer-text">联系我们: 1034660198 (QQ群)</text>
+            <text class="footer-text">最后更新日期：2025年10月</text>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+.container {
+  width: 466px;
+  height: 466px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #000000;
+}
+
+.header {
+  width: 466px;
+  height: 100px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30px;
+  background-color: #000000;
+  border-bottom: 1px solid #333333;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.back-button {
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #333333;
+  border-radius: 20px;
+  margin-bottom: 8px; 
+}
+
+.back-arrow {
+  font-size: 18px;
+  color: #FFFFFF;
+  margin-right: 6px;
+}
+
+.back-text {
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+.title {
+  font-size: 24px;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.content-container {
+  width: 466px;
+  height: 366px;
+  position: absolute;
+  top: 100px;
+  left: 0px;
+  background-color: #000000;
+  overflow: scroll;
+}
+
+.protocol-content {
+  width: 324px;
+  min-height: 366px;
+  position: absolute;
+  top: 0px;
+  left: 71px;
+  flex-direction: column;
+  padding: 15px 0;
+}
+
+.section {
+  width: 100%;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+.section-title-container {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 18px;
+  color: #70CEFE;
+  font-weight: 700;
+}
+
+.text-container {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.section-text {
+  font-size: 16px;
+  color: #FFFFFF;
+  line-height: 22px;
+}
+
+.footer {
+  width: 100%;
+  align-items: center;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #333333;
+}
+
+.footer-text-container {
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer-text {
+  font-size: 12px; 
+  color: #888888;
+  text-align: center;
+  line-height: 16px;
+}
+</style>
+
+<script>
+import router from '@system.router';
+
+export default {
+  data: {
+  },
+
+  onInit() {
+  },
+
+  onReady() {
+  },
+
+  onShow() {
+  },
+
+  onHide() {
+  },
+
+  goBack() {
+    router.back({
+      uri: 'pages/welcome'
+    });
+  }
+}
+
+</script>

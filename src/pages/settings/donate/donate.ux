@@ -1,0 +1,126 @@
+<template>
+  <div class="container">
+    <div class="header">
+      <div class="back-button" onclick="goBack">
+        <text class="back-arrow">←</text>
+        <text class="back-text">返回</text>
+      </div>
+      <text class="title">捐赠支持</text>
+    </div>
+
+    <div class="content-scroller">
+      <div class="content-container">
+
+        <div class="center-wrapper" style="top: 30px;">
+          <div class="thank-section">
+            <text class="section-title thank-title">感谢您的支持</text>
+            <text class="section-text">您的捐赠将帮助我们持续改进和完善这个项目。</text>
+          </div>
+        </div>
+
+        <div class="center-wrapper" style="top: 150px;">
+          <div class="qrcode-section">
+            <image class="qrcode-image" src="../../../common/qrcode.png"></image>
+            <text class="qrcode-hint">扫描二维码进行捐赠</text>
+          </div>
+        </div>
+
+        <div class="center-wrapper" style="top: 465px;">
+          <div class="info-section">
+            <text class="section-title">捐赠说明</text>
+            <text class="info-text">• 捐赠金额不限，心意最重要</text>
+            <text class="info-text">• 所有捐赠将用于项目开发和维护</text>
+            <text class="info-text">• 捐赠后请保留凭证备查</text>
+          </div>
+        </div>
+
+        <div class="center-wrapper" style="top: 725px;">
+          <div class="contact-section">
+            <text class="section-title">联系我们</text>
+            <text class="contact-text">QQ群: 1034660198</text>
+            <text class="contact-text">GitHub: AetherZeng</text>
+          </div>
+        </div>
+
+        <div class="center-wrapper" style="top: 925px;">
+          <div class="footer-section">
+            <text class="footer-text">再次感谢您对HyperSurf项目的支持！</text>
+            <text class="footer-text">镇得斯工作室 敬上</text>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+.container { width: 466px; height: 466px; background-color: #000000; }
+.header { width: 466px; height: 100px; flex-direction: column; align-items: center; justify-content: center; position: absolute; top: 0px; left: 0px; border-bottom: 1px solid #333333; z-index: 10; }
+.back-button { flex-direction: row; align-items: center; padding: 8px 16px; background-color: #333333; border-radius: 20px; margin-bottom: 8px; }
+.back-arrow { font-size: 18px; color: #FFFFFF; margin-right: 6px; }
+.back-text { font-size: 16px; color: #FFFFFF; }
+.title { font-size: 24px; color: #FFFFFF; font-weight: 700; }
+
+.content-scroller { width: 466px; height: 366px; position: absolute; top: 100px; left: 0px; overflow: scroll; }
+.content-container { width: 100%; height: 1250px; }
+
+.center-wrapper {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.section-title { font-size: 18px; color: #70CEFE; font-weight: 700; margin-bottom: 15px; text-align: center; }
+.section-text { font-size: 16px; color: #FFFFFF; line-height: 22px; text-align: center; }
+
+.thank-section, .qrcode-section, .info-section, .contact-section, .footer-section {
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.thank-section { width: 324px; align-items: center; }
+.thank-title { font-size: 20px; }
+
+.qrcode-section { width: 324px; align-items: center; }
+.qrcode-image { width: 250px; height: 250px; border-radius: 15px; }
+.qrcode-hint { font-size: 16px; color: #888888; margin-top: 15px; }
+
+.info-section,
+.contact-section {
+  flex: 0 0 280px;
+  max-width: 280px;
+  align-self: center;
+  
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #222222;
+  border-radius: 20px;
+}
+.info-section .section-title,
+.contact-section .section-title { width: 100%; text-align: center; }
+.info-text, .contact-text { font-size: 15px; color: #DDDDDD; margin-bottom: 8px; line-height: 22px; text-align: left; }
+
+.footer-section { width: 100%; border-top: 1px solid #333333; padding-top: 30px; align-items: center; }
+.footer-text { font-size: 14px; color: #888888; text-align: center; margin-bottom: 8px; }
+</style>
+
+<script>
+import router from '@system.router'
+
+export default {
+  data: {
+  },
+
+  onInit() {
+  },
+
+  onReady() {
+  },
+
+  goBack() {
+    router.back()
+  }
+}
+</script>

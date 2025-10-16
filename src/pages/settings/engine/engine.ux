@@ -1,0 +1,154 @@
+<template>
+  <div class="container">
+    <div class="header">
+      <div class="back-button" onclick="goBack">
+        <text class="back-arrow">←</text>
+        <text class="back-text">返回</text>
+      </div>
+      <text class="title">搜索引擎</text>
+    </div>
+    <div class="engine-list">
+      <div class="engine-item {{currentEngine === 'Bing' ? 'selected' : ''}}" onclick="selectEngine('Bing')">
+        <text class="engine-name">必应</text>
+        <text class="engine-check" if="{{currentEngine === 'Bing'}}">✓</text>
+      </div>
+      <div class="engine-item {{currentEngine === 'Google' ? 'selected' : ''}}" onclick="selectEngine('Google')">
+        <text class="engine-name">谷歌</text>
+        <text class="engine-check" if="{{currentEngine === 'Google'}}">✓</text>
+      </div>
+    </div>
+
+    
+  </div>
+</template>
+
+<style>
+.container {
+  width: 466px;
+  height: 466px;
+  background-color: #000000;
+}
+
+.header {
+  width: 466px;
+  height: 100px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-bottom: 1px solid #333333;
+  z-index: 10;
+}
+.back-button { flex-direction: row; align-items: center; padding: 8px 16px; background-color: #333333; border-radius: 20px; margin-bottom: 8px; }
+.back-arrow { font-size: 18px; color: #FFFFFF; margin-right: 6px; }
+.back-text { font-size: 16px; color: #FFFFFF; }
+.title { font-size: 24px; color: #FFFFFF; font-weight: 700; }
+
+.engine-list {
+  position: absolute;
+  top: 120px;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.engine-item {
+  width: 320px;
+  height: 70px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  background-color: #333333;
+  border-radius: 35px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+}
+
+.engine-item.selected {
+  background-color: rgba(112, 206, 254, 0.15);
+  border-color: #70CEFE;
+}
+
+.engine-name {
+  font-size: 18px;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.engine-check {
+  font-size: 24px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+
+</style>
+
+<script>
+import router from '@system.router'
+import storage from '@system.storage'
+
+export default {
+  data: {
+    currentEngine: 'Bing'
+  },
+
+  onInit() {
+    this.loadSelectedEngine()
+  },
+
+  onReady() {
+  },
+
+  loadSelectedEngine() {
+    storage.get({
+      key: 'selected_engine',
+      success: (data) => {
+        if (data === 'Bing' || data === 'Google') {
+          this.currentEngine = data
+        } else {
+          this.currentEngine = 'Bing'
+        }
+      },
+      fail: () => {
+        this.currentEngine = 'Bing'
+      }
+    })
+  },
+
+  selectEngine(engine) {
+    this.currentEngine = engine
+    this.saveSelectedEngine(engine)
+  },
+
+  saveSelectedEngine(engine) {
+    storage.set({
+      key: 'selected_engine',
+      value: engine,
+      success: () => {
+      },
+      fail: (error) => {
+      }
+    })
+  },
+
+  getEngineName(engine) {
+    switch(engine) {
+      case 'Bing':
+        return '必应'
+      case 'Google':
+        return '谷歌'
+      default:
+        return '必应'
+    }
+  },
+
+  goBack() {
+    router.back()
+  }
+}
+</script>

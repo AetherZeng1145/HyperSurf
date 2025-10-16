@@ -1,0 +1,358 @@
+<template>
+  <div class="container">
+    <div class="step" if="{{currentStep === 0}}">
+      <div class="background"></div>
+      <div class="content">
+        <text class="main-text">欢迎您，勇士！</text>
+        <div class="button-container">
+          <div class="continue-button" onclick="handleNextStep">
+            <text class="button-text">点按以继续</text>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step" if="{{currentStep === 1}}">
+      <div class="background"></div>
+      <div class="content">
+        <text class="thank-text">感谢您选择</text>
+        <text class="brand-text">HyperSurf 先行预览版</text>
+        <div class="button-container">
+          <div class="continue-button" onclick="handleNextStep">
+            <text class="button-text">点按以继续</text>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step" if="{{currentStep === 2}}">
+      <div class="background"></div>
+      <div class="content-step4">
+        <text class="main-text">请先阅读协议</text>
+        <div class="protocol-links">
+          <text class="protocol-link" onclick="openAppProtocol">《HyperSurf软件协议》</text>
+          <text class="protocol-link" onclick="openZendesProtocol">《镇得斯工作室用户协议》</text>
+        </div>
+        <div class="agreement-row" onclick="toggleAgreement">
+          <div class="checkbox {{agreed ? 'checked' : ''}}">
+            <text class="checkmark" if="{{agreed}}">✓</text>
+          </div>
+          <text class="agreement-text">我已经阅读上述协议</text>
+        </div>
+      </div>
+      <div class="button-container">
+        <div class="next-button {{agreed ? 'active' : 'disabled'}}" onclick="handleNextStep" if="{{agreed}}">
+          <text class="button-text">下一步</text>
+        </div>
+        <div class="next-button disabled" if="{{!agreed}}">
+          <text class="button-text">下一步</text>
+        </div>
+      </div>
+    </div>
+    <div class="step" if="{{currentStep === 3}}">
+      <div class="background"></div>
+      <div class="content">
+        <text class="main-text">欢迎反馈</text>
+        <text class="info-line">GitHub仓库提交issue</text>
+        <text class="info-line">反馈群：1034660198</text>
+        <div class="button-container">
+          <div class="continue-button" onclick="handleNextStep">
+            <text class="button-text">点按以继续</text>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" if="{{currentStep === 4}}">
+      <div class="background"></div>
+      <div class="content">
+        <text class="main-text">HyperSurf 先行预览版</text>
+        <text class="ready-text">已经准备好了</text>
+        <div class="button-container">
+          <div class="start-button" onclick="startUsing">
+            <text class="button-text">开始使用</text>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+.container {
+  width: 466px;
+  height: 466px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #000000;
+}
+
+.step {
+  width: 466px;
+  height: 466px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.background {
+  width: 466px;
+  height: 466px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: linear-gradient(135deg, #0A0A0A 0%, #000000 100%);
+  border-radius: 233px;
+}
+
+.content {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: 33px;
+  left: 33px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-step4 {
+  width: 400px;
+  height: 350px; 
+  position: absolute;
+  top: 31px;
+  left: 33px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 35px; 
+}
+
+.button-container {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 50px;
+}
+
+.continue-button, .next-button, .start-button {
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+.continue-button, .next-button.active, .start-button {
+  background-color: #70CEFE;
+}
+
+.next-button {
+  background-color: #333333;
+}
+
+.next-button.disabled {
+  background-color: #222222;
+}
+
+.button-text {
+  font-size: 18px;
+  color: #FFFFFF;
+  font-weight: 700;
+  lines: 1;
+}
+
+.next-button.disabled .button-text {
+  color: #ffffff;
+}
+
+.main-text {
+  font-size: 36px;
+  color: #FFFFFF;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 30px;
+  lines: 1;
+}
+
+.thank-text {
+  font-size: 24px;
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 15px;
+  lines: 1;
+  font-weight: 400;
+}
+
+.brand-text {
+  font-size: 28px;
+  color: #70CEFE;
+  text-align: center;
+  margin-bottom: 30px;
+  lines: 1;
+  font-weight: 700;
+}
+
+.sub-text {
+  font-size: 22px;
+  color: #CCCCCC;
+  text-align: center;
+  margin-bottom: 30px;
+  lines: 1;
+  font-weight: 400;
+}
+
+
+.protocol-links {
+  width: 350px;
+  align-items: center;
+  margin: 15px 0;
+  flex-direction: column;
+}
+
+
+.protocol-link {
+  font-size: 16px;
+  color: #70CEFE;
+  text-align: center;
+  margin: 6px 0;
+  text-decoration: underline;
+  lines: 1;
+  font-weight: 400;
+}
+
+.agreement-row {
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 0;
+}
+
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #333333;
+  border-radius: 4px;
+  margin-right: 12px;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+}
+
+.checkbox.checked {
+  background-color: #70CEFE;
+  border-color: #70CEFE;
+}
+
+
+.checkmark {
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.agreement-text {
+  font-size: 16px;
+  color: #FFFFFF;
+  lines: 1;
+  font-weight: 400;
+}
+
+.info-line {
+  font-size: 16px;
+  color: #CCCCCC;
+  text-align: center;
+  margin: 10px 0;
+  lines: 1;
+  font-weight: 400;
+}
+
+.ready-text {
+  font-size: 20px;
+  color: #CCCCCC;
+  text-align: center;
+  margin: 25px 0;
+  lines: 1;
+  font-weight: 400;
+}
+</style>
+
+<script>
+import router from '@system.router'
+import storage from '@system.storage'
+
+export default {
+  data: {
+    currentStep: 0,
+    agreed: false
+  },
+
+  onInit() {
+    this.checkWelcomeStatus()
+  },
+
+  checkWelcomeStatus() {
+    storage.get({
+      key: 'welcome_completed',
+      success: (data) => {
+        if (data === '1') {
+          router.replace({
+            uri: 'pages/homeindex'
+          })
+        }
+      }
+    })
+  },
+
+  handleNextStep(e) {
+    if (e && e.stop) {
+      e.stop()
+    }
+    
+    if (this.currentStep === 2 && !this.agreed) {
+      return
+    }
+
+    if (this.currentStep < 4) {
+      this.currentStep++
+    }
+  },
+
+  toggleAgreement(e) {
+    e.stop = true
+    this.agreed = !this.agreed
+  },
+
+  openAppProtocol(e) {
+    e.stop = true
+    router.push({
+      uri: 'pages/protocol/appprotocol' 
+    })
+  },
+
+  openZendesProtocol(e) {
+    e.stop = true
+    router.push({
+      uri: 'pages/protocol/zendes' 
+    })
+  },
+
+  startUsing() {
+     storage.set({
+       key: 'welcome_completed',
+       value: '1',
+       success: () => {
+         router.replace({
+           uri: 'pages/homeindex'
+         })
+       },
+       fail: (data, code) => {
+         router.replace({
+           uri: 'pages/homeindex'
+         })
+       }
+     })
+  }
+}
+
+</script>

@@ -1,0 +1,296 @@
+<template>
+  <div class="container">
+    <div class="header">
+      <div class="back-button" onclick="goBack">
+        <text class="back-arrow">←</text>
+        <text class="back-text">返回</text>
+      </div>
+      <text class="title">HyperSurf软件协议</text>
+    </div>
+
+    <div class="content-container">
+      <div class="protocol-content">
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">重要提示</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">在您使用HyperSurf先行预览版（以下简称"本软件"）之前，请仔细阅读本协议。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">一旦您使用本软件，即表示您已同意接受本协议的所有条款和条件。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">1. 服务说明</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">HyperSurf先行预览版是由镇得斯工作室开发的浏览器应用，目前处于预览测试阶段。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">不提供任何云服务功能。所有功能均在本地设备上运行。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">2. 保密义务</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">用户在使用本软件过程中可能接触到镇得斯工作室的保密信息。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">包括但不限于技术信息、商业信息等。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">用户同意对上述保密信息承担保密义务。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">未经镇得斯工作室书面同意，不得向任何第三方泄露、披露或使用该等信息。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">3. 知识产权保护</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">严禁对本软件进行解包、逆向工程、反编译、反汇编。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">或其他试图获取软件源代码的行为。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">任何此类行为均构成对本协议的重大违约。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">侵权者将承担相应的法律责任，包括但不限于民事赔偿责任和刑事责任。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">4. 免责声明</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">对于非本软件自身Bug所造成的设备损坏、数据丢失或其他问题。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">镇得斯工作室不承担任何责任。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">本软件按"原样"提供，不附带任何明示或暗示的保证。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">5. 使用规范</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">HyperSurf作为浏览器工具，无法控制用户的搜索内容和搜索结果。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">用户应保证其搜索行为及搜索内容符合所在国家/地区的法律法规。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">因用户不当搜索行为导致的法律后果，由用户自行承担。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">镇得斯工作室不承担任何责任。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">6. 协议修改</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">镇得斯工作室保留随时修改本协议条款的权利。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">修改后的协议将在本软件中公布，不再另行通知。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">用户继续使用本软件即视为接受修改后的协议。</text>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title-container">
+            <text class="section-title">7. 协议终止</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">如用户违反本协议的任何条款，镇得斯工作室有权立即终止本协议。</text>
+          </div>
+          <div class="text-container">
+            <text class="section-text">并限制或终止用户使用本软件的权利。</text>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div class="footer-text-container">
+            <text class="footer-text">镇得斯工作室 保留所有权利</text>
+            <text class="footer-text">最后更新日期：2025.10</text>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+.container {
+  width: 466px;
+  height: 466px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #000000;
+}
+
+.header {
+  width: 466px;
+  height: 100px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30px;
+  background-color: #000000;
+  border-bottom: 1px solid #333333;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.back-button {
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #333333;
+  border-radius: 20px;
+  margin-bottom: 8px; 
+}
+
+.back-arrow {
+  font-size: 18px;
+  color: #FFFFFF;
+  margin-right: 6px;
+}
+
+.back-text {
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+.title {
+  font-size: 24px;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+
+
+.content-container {
+  width: 466px;
+  height: 366px;
+  position: absolute;
+  top: 100px;
+  left: 0px;
+  background-color: #000000;
+  overflow: scroll;
+}
+
+.protocol-content {
+  width: 324px;
+  min-height: 366px;
+  position: absolute;
+  top: 0px;
+  left: 71px;
+  flex-direction: column;
+  padding: 15px 0;
+}
+
+.section {
+  width: 100%;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+.section-title-container {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 18px;
+  color: #70CEFE;
+  font-weight: 700;
+  lines: 1;
+}
+
+.text-container {
+  width: 100%;
+  margin-bottom: 8px;
+  flex-direction: row;
+}
+
+.section-text {
+  font-size: 16px;
+  color: #FFFFFF;
+  line-height: 22px;
+  text-align: left;
+}
+
+.footer {
+  width: 100%;
+  align-items: center;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #333333;
+}
+
+.footer-text-container {
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer-text {
+  font-size: 12px; 
+  color: #888888;
+  text-align: center;
+  line-height: 16px;
+}
+</style>
+
+<script>
+import router from '@system.router'
+
+export default {
+  data: {
+    currentYear: '2025',
+    currentMonth: '10'
+  },
+
+  onInit() {
+    this.getCurrentDate()
+  },
+
+  onReady() {
+  },
+
+  onShow() {
+  },
+
+  onHide() {
+  },
+
+  goBack() {
+    router.back()
+  }
+}
+</script>

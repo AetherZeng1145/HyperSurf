@@ -1,0 +1,67 @@
+{
+  "package": "com.zendes.hypersurf.preview",
+  "name": "HyperSurf先行预览版",
+  "versionName": "0.2.2",
+  "versionCode": 1,
+  "minPlatformVersion": 1000,
+  "icon": "/common/logo.png",
+  "deviceTypeList": [
+    "watch"
+  ],
+  "features": [
+    {
+      "name": "system.router"
+    },
+    {
+      "name": "system.fetch"
+    },
+    {
+      "name": "system.storage"
+    },
+    {
+      "name": "system.prompt"
+    },
+    {
+      "name": "system.vibrator"
+    },
+    {
+      "name": "system.app"
+    }
+  ],
+  "config": {
+    "logLevel": "log",
+    "designWidth": "device-width"
+  },
+  "router": {
+    "entry": "pages/welcome",
+    "pages": {
+      "pages/welcome": {
+        "component": "welcome"
+      },
+      "pages/browser": {
+        "component": "browser"
+      },
+      "pages/settings/settings": {
+        "component": "settings"
+      },
+      "pages/settings/about": {
+        "component": "about"
+      },
+      "pages/settings/engine": {
+        "component": "engine"
+      },
+      "pages/settings/donate": {
+        "component": "donate"
+      },
+      "pages/protocol/appprotocol": {
+        "component": "appprotocol"
+      },
+      "pages/protocol/zendes":{
+        "component": "zendes"
+      },
+      "pages/homeindex":{
+        "component": "homeindex"
+      }
+    }
+ }
+}

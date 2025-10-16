@@ -1,0 +1,145 @@
+<import name="comp-input-method" src="../../components/InputMethod/InputMethod.ux"></import>
+<template>
+  <div class="page-container">
+    <div class="scroll-content">
+      <div class="header">
+        <text class="app-name">HyperSurf 先行预览版</text>
+      </div>
+      <div class="search-container">
+        <div class="search-box" onclick="showKeyboard">
+          <text class="search-placeholder" if="{{!searchText}}">搜索或输入网址</text>
+          <text class="search-text" if="{{searchText}}">{{searchText}}</text>
+        </div>
+      </div>
+      <div class="button-container">
+        <div class="button search-button" onclick="handleSearch">
+          <text class="button-text">搜索</text>
+        </div>
+        <div class="button settings-button" onclick="goToSettings">
+          <text class="button-text">设置</text>
+        </div>
+      </div>
+    </div>
+    <comp-input-method
+      if="{{ !isKeyboardHidden }}"
+      oncomplete="onInputComplete"
+      ondelete="onInputDelete"
+      onhide="hideKeyboard"
+    ></comp-input-method>
+  </div>
+</template>
+
+<style>
+  .page-container { 
+    width: 466px; 
+    height: 466px; 
+    background-color: #000000; 
+  }
+
+  .scroll-content { 
+    width: 100%; 
+    height: 100%; 
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .header { 
+    align-items: center; 
+    margin-top: 115px; 
+    margin-bottom: 30px;
+  }
+
+  .app-name { 
+    font-size: 26px; 
+    color: #FFFFFF; 
+    font-weight: 700; 
+  }
+
+  .search-container { 
+    width: 320px; 
+    margin-bottom: 30px;
+  }
+
+  .search-box { 
+    width: 100%; 
+    height: 60px; 
+    border-radius: 30px; 
+    background-color: #333333; 
+    justify-content: center; 
+    align-items: center; 
+  }
+
+  .search-placeholder { 
+    font-size: 18px; 
+    color: #888888; 
+  }
+
+  .search-text { 
+    font-size: 18px; 
+    color: #FFFFFF; 
+  }
+
+  .button-container { 
+    width: 320px; 
+    flex-direction: row; 
+    justify-content: space-between; 
+  }
+
+  .button { 
+    width: 140px; 
+    height: 50px; 
+    border-radius: 25px; 
+    justify-content: center; 
+    align-items: center; 
+  }
+
+  .search-button { 
+    background-color: #70CEFE; 
+  }
+
+  .settings-button { 
+    background-color: #333333; 
+  }
+
+  .button-text { 
+    font-size: 18px; 
+    color: #FFFFFF; 
+    font-weight: 700; 
+  }
+</style>
+
+<script>
+  import router from '@system.router';
+  export default {
+    data: {
+      isKeyboardHidden: true,
+      searchText: ""
+    },
+    showKeyboard() { this.isKeyboardHidden = false; },
+    hideKeyboard() { this.isKeyboardHidden = true; },
+    onInputComplete(event) { this.searchText += event.detail.content; },
+    onInputDelete() { if (this.searchText.length > 0) { this.searchText = this.searchText.slice(0, -1); } },
+    
+    handleSearch() {
+      this.isKeyboardHidden = true;
+
+      const searchText = this.searchText;
+
+      if (!searchText || !searchText.trim()) {
+        return;
+      }
+      router.push({
+        uri: 'pages/browser', 
+        params: {
+          searchText: searchText
+        }
+      });
+    },
+    goToSettings() {
+      this.isKeyboardHidden = true;
+      router.push({
+        uri: 'pages/settings/settings' 
+      });
+    }
+  }
+</script>

@@ -1,0 +1,202 @@
+<template>
+  <div class="container">
+    <div class="header">
+      <div class="back-button" onclick="goBack">
+        <text class="back-arrow">←</text>
+        <text class="back-text">返回</text>
+      </div>
+      <text class="title">设置</text>
+    </div>
+    <div class="settings-list">
+      <div class="setting-item" onclick="goToEngine">
+        <text class="item-text">搜索引擎</text>
+        <div class="item-right">
+          <text class="current-engine">{{currentEngineName}}</text>
+          <text class="item-arrow">›</text>
+        </div>
+      </div>
+      <div class="setting-item" onclick="goToAbout">
+        <text class="item-text">关于</text>
+        <text class="item-arrow">›</text>
+      </div>
+      <div class="setting-item" onclick="goToDonate">
+        <text class="item-text">捐赠</text>
+        <text class="item-arrow">›</text>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+.container {
+  width: 466px;
+  height: 466px;
+  background-color: #000000;
+}
+
+.header {
+  width: 466px;
+  height: 100px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-bottom: 1px solid #333333;
+}
+
+.back-button {
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #333333;
+  border-radius: 20px;
+  margin-bottom: 8px; 
+}
+
+.back-arrow {
+  font-size: 18px;
+  color: #FFFFFF;
+  margin-right: 6px;
+}
+
+.back-text {
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+.title {
+  font-size: 24px;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+
+.settings-list {
+  width: 100%;
+  position: absolute;
+  top: 100px; 
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.setting-item {
+  width: 320px;
+  height: 60px; 
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  background-color: #333333;
+  border-radius: 35px;
+  margin-bottom: 15px;
+}
+
+.item-text {
+  font-size: 18px;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.item-right {
+  flex-direction: row;
+  align-items: center;
+}
+
+.current-engine {
+  font-size: 16px;
+  color: #888888;
+  margin-right: 10px;
+}
+
+.item-arrow {
+  font-size: 24px;
+  color: #888888;
+}
+</style>
+
+<script>
+import router from '@system.router'
+import storage from '@system.storage'
+
+export default {
+  data: {
+    currentEngine: 'Baidu',
+    displayCount: 5
+  },
+
+  onInit() {
+    this.loadCurrentEngine();
+    this.loadDisplayCount();
+  },
+
+  onShow() {
+    this.loadCurrentEngine();
+    this.loadDisplayCount();
+  },
+
+  loadCurrentEngine() {
+    storage.get({
+      key: 'selected_engine',
+      success: (data) => {
+        if (data) {
+          this.currentEngine = data
+        }
+      },
+      fail: () => {
+        this.currentEngine = 'Baidu'
+      }
+    })
+  },
+
+  loadDisplayCount() {
+    storage.get({
+      key: 'results_per_page',
+      success: (data) => {
+        if (data) {
+          this.displayCount = parseInt(data);
+        }
+      },
+      fail: () => {
+        this.displayCount = 5;
+      }
+    })
+  },
+
+  getCurrentEngineName() {
+    switch(this.currentEngine) {
+      case 'Bing':
+        return '必应'
+      case 'Google':
+        return '谷歌'
+      default:
+        return '必应'
+    }
+  },
+
+  goBack() {
+    router.back()
+  },
+
+  goToEngine() {
+    router.push({
+      uri: 'pages/settings/engine'
+    })
+  },
+
+
+  goToAbout() {
+    router.push({
+      uri: 'pages/settings/about'
+    })
+  },
+
+  goToDonate() {
+    router.push({
+      uri: 'pages/settings/donate'
+    })
+  }
+}
+</script>
