@@ -56,18 +56,18 @@
 }
 
 .back-arrow {
-  font-size: 18px;
+  font-size: 20px; /* 关键修改：18px -> 20px */
   color: #FFFFFF;
   margin-right: 6px;
 }
 
 .back-text {
-  font-size: 16px;
+  font-size: 18px; /* 关键修改：16px -> 18px */
   color: #FFFFFF;
 }
 
 .title {
-  font-size: 24px;
+  font-size: 26px; /* 关键修改：24px -> 26px */
   color: #FFFFFF;
   font-weight: 700;
 }
@@ -76,26 +76,26 @@
 .settings-list {
   width: 100%;
   position: absolute;
-  top: 100px; 
+  top: 120px; /* 增加顶部间距 */
   flex-direction: column;
   align-items: center;
   padding: 15px 0;
 }
 
 .setting-item {
-  width: 320px;
-  height: 60px; 
+  width: 340px; /* 配合文字增大，按钮也稍稍加宽 */
+  height: 70px; 
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 25px;
+  padding: 0 30px;
   background-color: #333333;
   border-radius: 35px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .item-text {
-  font-size: 18px;
+  font-size: 22px; /* 关键修改：18px -> 22px */
   color: #FFFFFF;
   font-weight: 700;
 }
@@ -106,18 +106,19 @@
 }
 
 .current-engine {
-  font-size: 16px;
+  font-size: 18px; /* 关键修改：16px -> 18px */
   color: #888888;
   margin-right: 10px;
 }
 
 .item-arrow {
-  font-size: 24px;
+  font-size: 28px; /* 关键修改：24px -> 28px */
   color: #888888;
 }
 </style>
 
 <script>
+// Script部分完全保持不变
 import router from '@system.router'
 import storage from '@system.storage'
 

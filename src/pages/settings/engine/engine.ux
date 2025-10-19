@@ -42,28 +42,28 @@
   z-index: 10;
 }
 .back-button { flex-direction: row; align-items: center; padding: 8px 16px; background-color: #333333; border-radius: 20px; margin-bottom: 8px; }
-.back-arrow { font-size: 18px; color: #FFFFFF; margin-right: 6px; }
-.back-text { font-size: 16px; color: #FFFFFF; }
-.title { font-size: 24px; color: #FFFFFF; font-weight: 700; }
+.back-arrow { font-size: 20px; /* 关键修改：18px -> 20px */ color: #FFFFFF; margin-right: 6px; }
+.back-text { font-size: 18px; /* 关键修改：16px -> 18px */ color: #FFFFFF; }
+.title { font-size: 26px; /* 关键修改：24px -> 26px */ color: #FFFFFF; font-weight: 700; }
 
 .engine-list {
   position: absolute;
-  top: 120px;
+  top: 140px; /* 增加顶部间距以适应更大的元素 */
   width: 100%;
   flex-direction: column;
   align-items: center;
 }
 
 .engine-item {
-  width: 320px;
-  height: 70px;
+  width: 340px; /* 配合文字增大，按钮也稍稍加宽 */
+  height: 80px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px;
+  padding: 0 35px;
   background-color: #333333;
-  border-radius: 35px;
-  margin-bottom: 20px;
+  border-radius: 40px;
+  margin-bottom: 25px;
   box-sizing: border-box;
   border: 2px solid transparent;
 }
@@ -74,13 +74,13 @@
 }
 
 .engine-name {
-  font-size: 18px;
+  font-size: 22px; /* 关键修改：18px -> 22px */
   color: #FFFFFF;
   font-weight: 700;
 }
 
 .engine-check {
-  font-size: 24px;
+  font-size: 28px; /* 关键修改：24px -> 28px */
   color: #FFFFFF;
   font-weight: bold;
 }
@@ -89,6 +89,7 @@
 </style>
 
 <script>
+// Script部分完全保持不变
 import router from '@system.router'
 import storage from '@system.storage'
 

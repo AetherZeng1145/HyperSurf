@@ -8,14 +8,15 @@
       <text class="title">关于</text>
     </div>
 
-    <div class="content-scroller">
+    <!-- 关键升级：将 div 替换为 scroll 组件，并开启回弹 -->
+    <scroll class="content-scroller" scroll-y="true" bounces="true">
       <div class="content-container">
 
         <div class="center-wrapper" style="top: 30px;">
           <div class="logo-section">
             <image class="app-logo" src="../../../common/logo.png"></image>
             <text class="app-name">HyperSurf 先行预览版</text>
-            <text class="version">版本 v0.2.2</text>
+            <text class="version">版本 v0.2.3</text>
           </div>
         </div>
 
@@ -59,18 +60,24 @@
         </div>
 
       </div>
-    </div>
+    </scroll>
   </div>
 </template>
 <style>
 .container { width: 466px; height: 466px; background-color: #000000; }
 .header { width: 466px; height: 100px; flex-direction: column; align-items: center; justify-content: center; position: absolute; top: 0px; left: 0px; border-bottom: 1px solid #333333; z-index: 10; }
 .back-button { flex-direction: row; align-items: center; padding: 8px 16px; background-color: #333333; border-radius: 20px; margin-bottom: 8px; }
-.back-arrow { font-size: 18px; color: #FFFFFF; margin-right: 6px; }
-.back-text { font-size: 16px; color: #FFFFFF; }
-.title { font-size: 24px; color: #FFFFFF; font-weight: 700; }
+.back-arrow { font-size: 20px; /* 关键修改：18px -> 20px */ color: #FFFFFF; margin-right: 6px; }
+.back-text { font-size: 18px; /* 关键修改：16px -> 18px */ color: #FFFFFF; }
+.title { font-size: 26px; /* 关键修改：24px -> 26px */ color: #FFFFFF; font-weight: 700; }
 
-.content-scroller { width: 466px; height: 366px; position: absolute; top: 100px; left: 0px; overflow: scroll; }
+.content-scroller { 
+  width: 466px; 
+  height: 366px; 
+  position: absolute; 
+  top: 100px; 
+  left: 0px; 
+}
 .content-container { width: 100%; height: 1000px; }
 
 .center-wrapper {
@@ -91,22 +98,22 @@
   margin-bottom: 20px;
 }
 .app-name {
-  font-size: 24px;
+  font-size: 28px; /* 关键修改：24px -> 28px */
   color: #FFFFFF;
   font-weight: bold;
   margin-bottom: 10px;
 }
 .version {
-  font-size: 16px;
+  font-size: 18px; /* 关键修改：16px -> 18px */
   color: #888888;
 }
 
 .developers-section {
-  width: 340px;
+  width: 380px; /* 适当加宽以容纳更大字体 */
   flex-direction: column;
 }
 .section-title {
-  font-size: 18px;
+  font-size: 20px; /* 关键修改：18px -> 20px */
   color: #70CEFE;
   margin-bottom: 20px;
   text-align: center;
@@ -114,36 +121,36 @@
 }
 .developer-item {
   width: 100%;
-  height: 80px;
+  height: 90px;
   flex-direction: row;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 25px;
   background-color: #222222;
-  border-radius: 40px;
+  border-radius: 45px;
   margin-bottom: 20px;
   box-sizing: border-box;
 }
 .developer-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  margin-right: 15px;
+  width: 55px;
+  height: 55px;
+  border-radius: 27.5px;
+  margin-right: 20px;
 }
 .developer-info {
   flex: 1;
   flex-direction: column;
 }
 .developer-name {
-  font-size: 18px;
+  font-size: 20px; /* 关键修改：18px -> 20px */
   color: #FFFFFF;
   font-weight: bold;
 }
 .developer-role {
-  font-size: 14px;
+  font-size: 16px; /* 关键修改：14px -> 16px */
   color: #AAAAAA;
 }
 .developer-tag {
-  font-size: 14px;
+  font-size: 16px; /* 关键修改：14px -> 16px */
   color: #888888;
   font-style: italic;
 }
@@ -153,13 +160,14 @@
   padding-top: 30px;
 }
 .slogan {
-  font-size: 16px;
+  font-size: 18px; /* 关键修改：16px -> 18px */
   color: #888888;
   font-style: italic;
 }
 </style>
 
 <script>
+// Script部分完全保持不变
 import router from '@system.router'
 
 export default {

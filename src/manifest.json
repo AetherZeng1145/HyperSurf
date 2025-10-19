@@ -1,7 +1,7 @@
 {
   "package": "com.zendes.hypersurf.preview",
   "name": "HyperSurf先行预览版",
-  "versionName": "0.2.2",
+  "versionName": "0.2.3",
   "versionCode": 1,
   "minPlatformVersion": 1000,
   "icon": "/common/logo.png",
@@ -19,13 +19,7 @@
       "name": "system.storage"
     },
     {
-      "name": "system.prompt"
-    },
-    {
       "name": "system.vibrator"
-    },
-    {
-      "name": "system.app"
     }
   ],
   "config": {

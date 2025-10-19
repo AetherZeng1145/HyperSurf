@@ -50,7 +50,7 @@
   }
 
   .app-name { 
-    font-size: 26px; 
+    font-size: 30px; /* 关键修改：26px -> 30px */
     color: #FFFFFF; 
     font-weight: 700; 
   }
@@ -70,12 +70,12 @@
   }
 
   .search-placeholder { 
-    font-size: 18px; 
+    font-size: 20px; /* 关键修改：18px -> 20px */
     color: #888888; 
   }
 
   .search-text { 
-    font-size: 18px; 
+    font-size: 20px; /* 关键修改：18px -> 20px */
     color: #FFFFFF; 
   }
 
@@ -102,13 +102,14 @@
   }
 
   .button-text { 
-    font-size: 18px; 
+    font-size: 20px; /* 关键修改：18px -> 20px */
     color: #FFFFFF; 
     font-weight: 700; 
   }
 </style>
 
 <script>
+  // Script部分完全保持不变
   import router from '@system.router';
   export default {
     data: {

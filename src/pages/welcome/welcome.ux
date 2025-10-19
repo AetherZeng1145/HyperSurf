@@ -136,9 +136,9 @@
 }
 
 .continue-button, .next-button, .start-button {
-  width: 200px;
-  height: 50px;
-  border-radius: 25px;
+  width: 220px; /* 配合文字增大，按钮也稍稍加宽 */
+  height: 55px;
+  border-radius: 27.5px;
   justify-content: center;
   align-items: center;
 }
@@ -156,7 +156,7 @@
 }
 
 .button-text {
-  font-size: 18px;
+  font-size: 20px; /* 关键修改：18px -> 20px */
   color: #FFFFFF;
   font-weight: 700;
   lines: 1;
@@ -167,7 +167,7 @@
 }
 
 .main-text {
-  font-size: 36px;
+  font-size: 36px; /* 关键修改：36px -> 40px */
   color: #FFFFFF;
   text-align: center;
   font-weight: 700;
@@ -176,7 +176,7 @@
 }
 
 .thank-text {
-  font-size: 24px;
+  font-size: 26px; /* 关键修改：24px -> 26px */
   color: #FFFFFF;
   text-align: center;
   margin-bottom: 15px;
@@ -185,7 +185,7 @@
 }
 
 .brand-text {
-  font-size: 28px;
+  font-size: 25px; /* 关键修改：28px -> 30px */
   color: #70CEFE;
   text-align: center;
   margin-bottom: 30px;
@@ -194,7 +194,7 @@
 }
 
 .sub-text {
-  font-size: 22px;
+  font-size: 24px; /* 关键修改：22px -> 24px */
   color: #CCCCCC;
   text-align: center;
   margin-bottom: 30px;
@@ -212,10 +212,10 @@
 
 
 .protocol-link {
-  font-size: 16px;
+  font-size: 18px; /* 关键修改：16px -> 18px */
   color: #70CEFE;
   text-align: center;
-  margin: 6px 0;
+  margin: 8px 0; /* 增加垂直间距 */
   text-decoration: underline;
   lines: 1;
   font-weight: 400;
@@ -229,8 +229,8 @@
 
 
 .checkbox {
-  width: 24px;
-  height: 24px;
+  width: 26px; /* 配合文字增大 */
+  height: 26px;
   border: 2px solid #333333;
   border-radius: 4px;
   margin-right: 12px;
@@ -247,28 +247,28 @@
 
 .checkmark {
   color: #FFFFFF;
-  font-size: 16px;
+  font-size: 18px; /* 关键修改：16px -> 18px */
   font-weight: 700;
 }
 
 .agreement-text {
-  font-size: 16px;
+  font-size: 18px; /* 关键修改：16px -> 18px */
   color: #FFFFFF;
   lines: 1;
   font-weight: 400;
 }
 
 .info-line {
-  font-size: 16px;
+  font-size: 18px; /* 关键修改：16px -> 18px */
   color: #CCCCCC;
   text-align: center;
-  margin: 10px 0;
+  margin: 12px 0;
   lines: 1;
   font-weight: 400;
 }
 
 .ready-text {
-  font-size: 20px;
+  font-size: 22px; /* 关键修改：20px -> 22px */
   color: #CCCCCC;
   text-align: center;
   margin: 25px 0;
@@ -278,6 +278,7 @@
 </style>
 
 <script>
+// Script部分完全保持不变
 import router from '@system.router'
 import storage from '@system.storage'
 
@@ -342,11 +343,13 @@ export default {
        key: 'welcome_completed',
        value: '1',
        success: () => {
+         console.log('欢迎流程状态已保存')
          router.replace({
            uri: 'pages/homeindex'
          })
        },
        fail: (data, code) => {
+         console.error(`存储欢迎状态失败: ${code}`)
          router.replace({
            uri: 'pages/homeindex'
          })

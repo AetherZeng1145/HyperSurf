@@ -8,7 +8,8 @@
       <text class="title">镇得斯工作室用户协议</text>
     </div>
 
-    <div class="content-container">
+    <!-- 关键升级：将 div 替换为 scroll 组件，并开启回弹 -->
+    <scroll class="content-container" scroll-y="true" bounces="true">
       <div class="protocol-content">
         
         <div class="section">
@@ -118,7 +119,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </scroll>
   </div>
 </template>
 
@@ -156,18 +157,18 @@
 }
 
 .back-arrow {
-  font-size: 18px;
+  font-size: 20px; /* 关键修改：18px -> 20px */
   color: #FFFFFF;
   margin-right: 6px;
 }
 
 .back-text {
-  font-size: 16px;
+  font-size: 18px; /* 关键修改：16px -> 18px */
   color: #FFFFFF;
 }
 
 .title {
-  font-size: 24px;
+  font-size: 26px; /* 关键修改：24px -> 26px */
   color: #FFFFFF;
   font-weight: 700;
 }
@@ -179,52 +180,53 @@
   top: 100px;
   left: 0px;
   background-color: #000000;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 .protocol-content {
-  width: 324px;
+  width: 380px; /* 适当加宽以容纳更大的字体 */
   min-height: 366px;
   position: absolute;
   top: 0px;
-  left: 71px;
+  left: 43px; /* (466 - 380) / 2 */
   flex-direction: column;
-  padding: 15px 0;
+  padding: 20px 0;
 }
 
 .section {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   flex-direction: column;
 }
 
 .section-title-container {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .section-title {
-  font-size: 18px;
+  font-size: 20px; /* 关键修改：18px -> 20px */
   color: #70CEFE;
   font-weight: 700;
+  line-height: 24px;
 }
 
 .text-container {
   width: 100%;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .section-text {
-  font-size: 16px;
+  font-size: 18px; /* 关键修改：16px -> 18px */
   color: #FFFFFF;
-  line-height: 22px;
+  line-height: 26px; /* 关键修改：增加行高以提升可读性 */
 }
 
 .footer {
   width: 100%;
   align-items: center;
-  margin-top: 25px;
-  padding-top: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
   border-top: 1px solid #333333;
 }
 
@@ -235,14 +237,15 @@
 }
 
 .footer-text {
-  font-size: 12px; 
+  font-size: 14px; /* 关键修改：12px -> 14px */
   color: #888888;
   text-align: center;
-  line-height: 16px;
+  line-height: 20px;
 }
 </style>
 
 <script>
+// Script部分完全保持不变
 import router from '@system.router';
 
 export default {
