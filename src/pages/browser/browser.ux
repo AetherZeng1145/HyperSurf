@@ -115,20 +115,74 @@
   }
 
   function parseGenericPage(html, url) {
+    console.log(`[网址解析] 开始解析页面: ${url}`);
+    
+    // 提取页面标题
     const titleMatch = html.match(/<title>(.*?)<\/title>/i);
     const title = titleMatch ? titleMatch[1].trim() : '无标题';
-
-    const cleanHtml = html.replace(/<script[^>]*>.*?<\/script>/gis, '').replace(/<style[^>]*>.*?<\/style>/gis, '');
-    let content = cleanHtml.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
     
+    // 提取页面描述
+    let description = '';
+    const descMatch = html.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']*)["'][^>]*>/i);
+    if (descMatch && descMatch[1]) {
+      description = descMatch[1].trim();
+    }
+    
+    // 移除脚本和样式标签
+    const cleanHtml = html.replace(/<script[^>]*>.*?<\/script>/gis, '').replace(/<style[^>]*>.*?<\/style>/gis, '');
+    
+    // 尝试提取主要内容区域
+    let content = '';
+    
+    // 常见的内容区域选择器
+    const contentSelectors = [
+      /<article[^>]*>(.*?)<\/article>/gis,
+      /<main[^>]*>(.*?)<\/main>/gis,
+      /<div[^>]*class=["'][^"']*(?:content|article|post|entry)[^"']*["'][^>]*>(.*?)<\/div>/gis,
+      /<div[^>]*id=["'][^"']*(?:content|article|post|entry|main)[^"']*["'][^>]*>(.*?)<\/div>/gis
+    ];
+    
+    // 尝试提取内容区域
+    for (const selector of contentSelectors) {
+      const match = cleanHtml.match(selector);
+      if (match && match[1]) {
+        content = match[1];
+        break;
+      }
+    }
+    
+    // 如果没有找到内容区域，使用整个body
+    if (!content) {
+      const bodyMatch = cleanHtml.match(/<body[^>]*>(.*?)<\/body>/is);
+      content = bodyMatch ? bodyMatch[1] : cleanHtml;
+    }
+    
+    // 清理HTML标签和多余空白
+    content = content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    
+    // 如果仍然没有内容，使用描述
+    if (content.length === 0 && description) {
+      content = description;
+    }
+    
+    // 如果还是没有内容，使用默认文本
     if (content.length === 0) {
       content = '无法提取有效正文。';
     }
-
+    
+    // 限制内容长度
+    const maxLength = 2000;
+    const truncatedContent = content.substring(0, maxLength) + (content.length > maxLength ? '...' : '');
+    
+    // 使用描述作为优先显示内容
+    const finalDesc = description || truncatedContent;
+    
+    console.log(`[网址解析] 解析完成 - 标题: ${title}, 内容长度: ${finalDesc.length}`);
+    
     return [{
       title: title,
       url: url,
-      desc: content.substring(0, 2000) + (content.length > 2000 ? '...' : '') // 返回desc，而不是content数组
+      desc: finalDesc
     }];
   }
 
@@ -207,9 +261,19 @@
     },
     performSearch(query, engine) {
       const searchUrl = this.buildSearchUrl(query, engine);
+      
+      // 检查是否是网址访问
+      const isDirectUrl = this.isUrl(query) || this.processSpecialUrls(query) !== null;
+      
       if (this.historyStack.length === 0) {
         this.historyStack.push({ url: searchUrl, engine: engine, title: query });
       }
+      
+      // 如果是直接访问网址，更新标题显示
+      if (isDirectUrl) {
+        this.updateTitle(`正在访问: ${searchUrl}`);
+      }
+      
       fetch.fetch({
         url: searchUrl,
         header: { 'User-Agent': 'Mozilla/5.0 (Linux; Android 10; SM-G975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36' },
@@ -218,17 +282,139 @@
         },
         fail: (error, code) => {
           this.loading = false;
-          this.results = [{ title: '网络请求失败', url: `错误码: ${code}`, desc: `无法从服务器获取搜索结果。详情: ${error}` }];
+          this.results = [{ 
+            title: isDirectUrl ? '网址访问失败' : '网络请求失败', 
+            url: `错误码: ${code}`, 
+            desc: isDirectUrl ? `无法访问网址: ${searchUrl}。详情: ${error}` : `无法从服务器获取搜索结果。详情: ${error}`
+          }];
         }
       });
     },
     buildSearchUrl(query, engine) {
+      // 首先检查特殊网址快捷方式
+      const specialUrl = this.processSpecialUrls(query);
+      if (specialUrl) {
+        console.log(`[网址解析] 使用快捷方式: ${query} -> ${specialUrl}`);
+        return specialUrl;
+      }
+      
+      // 检查是否是直接输入的网址
+      if (this.isUrl(query)) {
+        // 自动补全网址
+        const autoCompletedUrl = this.autoCompleteUrl(query);
+        console.log(`[网址解析] 自动补全网址: ${query} -> ${autoCompletedUrl}`);
+        return autoCompletedUrl;
+      }
+      
+      // 如果不是网址，执行搜索
       const encodedQuery = encodeURIComponent(query);
       switch(engine) {
         case 'Bing': return `https://www.bing.com/search?q=${encodedQuery}`;
         case 'Google': return `https://www.google.com/search?q=${encodedQuery}`;
         default: return `https://www.bing.com/search?q=${encodedQuery}`;
       }
+    },
+    
+    // 检查输入是否为网址
+    isUrl(text) {
+      // 网址正则表达式
+      const urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+      // 常见顶级域名
+      const tlds = ['.com', '.cn', '.org', '.net', '.edu', '.gov', '.io', '.co', '.ai', '.tech', '.info', '.biz'];
+      
+      // 检查是否包含常见顶级域名
+      const hasTld = tlds.some(tld => text.includes(tld));
+      
+      // 检查是否匹配网址模式或包含顶级域名
+      return urlPattern.test(text) || hasTld;
+    },
+    
+    // 网址自动补全
+    autoCompleteUrl(text) {
+      if (!text) return '';
+      
+      // 如果已经是完整网址，直接返回
+      if (text.startsWith('http://') || text.startsWith('https://')) {
+        return text;
+      }
+      
+      // 常见网址前缀补全
+      const commonPrefixes = ['www.', 'm.', 'mobile.', 'wap.'];
+      const hasPrefix = commonPrefixes.some(prefix => text.startsWith(prefix));
+      
+      // 如果包含常见前缀但没有协议，添加https://
+      if (hasPrefix) {
+        return 'https://' + text;
+      }
+      
+      // 如果包含顶级域名但没有协议，添加https://
+      const tlds = ['.com', '.cn', '.org', '.net', '.edu', '.gov', '.io', '.co', '.ai', '.tech', '.info', '.biz'];
+      const hasTld = tlds.some(tld => text.includes(tld));
+      
+      if (hasTld) {
+        return 'https://' + text;
+      }
+      
+      // 如果是常见网站名称，自动补全
+      const commonSites = {
+        'baidu': 'https://www.baidu.com',
+        'google': 'https://www.google.com',
+        'bing': 'https://www.bing.com',
+        'github': 'https://github.com',
+        'stackoverflow': 'https://stackoverflow.com',
+        'bilibili': 'https://www.bilibili.com',
+        'weibo': 'https://weibo.com',
+        'zhihu': 'https://www.zhihu.com',
+        'taobao': 'https://www.taobao.com',
+        'jd': 'https://www.jd.com',
+        'tmall': 'https://www.tmall.com'
+      };
+      
+      const siteKey = text.toLowerCase();
+      if (commonSites[siteKey]) {
+        return commonSites[siteKey];
+      }
+      
+      return text;
+    },
+    
+    // 处理特殊网址快捷方式
+    processSpecialUrls(text) {
+      const lowerText = text.toLowerCase();
+      
+      // 处理常用网址快捷方式
+      const shortcuts = {
+        'g': 'https://www.google.com',
+        'b': 'https://www.baidu.com',
+        'bi': 'https://www.bing.com',
+        'gh': 'https://github.com',
+        'so': 'https://stackoverflow.com',
+        'b站': 'https://www.bilibili.com',
+        'wb': 'https://weibo.com',
+        'zh': 'https://www.zhihu.com',
+        'tb': 'https://www.taobao.com',
+        'jd': 'https://www.jd.com'
+      };
+      
+      if (shortcuts[lowerText]) {
+        return shortcuts[lowerText];
+      }
+      
+      // 处理搜索快捷方式，如 "g 搜索词"
+      const searchShortcut = lowerText.match(/^(g|b|bi|so)\s+(.+)$/);
+      if (searchShortcut) {
+        const [, engine, query] = searchShortcut;
+        const encodedQuery = encodeURIComponent(query);
+        
+        switch(engine) {
+          case 'g': return `https://www.google.com/search?q=${encodedQuery}`;
+          case 'b': return `https://www.baidu.com/s?wd=${encodedQuery}`;
+          case 'bi': return `https://www.bing.com/search?q=${encodedQuery}`;
+          case 'so': return `https://stackoverflow.com/search?q=${encodedQuery}`;
+        }
+      }
+      
+      return null;
     },
     parseSearchResults(data, engine, url  ) {
       try {
