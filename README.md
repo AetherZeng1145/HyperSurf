@@ -1,5 +1,5 @@
 # HyperSurf 澎湃超浪浏览器——Xiaomi Watch S系列
-一款为VelaOS打造的浏览器
+一款为VelaOS打造的文字浏览器
 
 ## 分支更新项目
 1. HyperSurf REDMI Watch 5版本
@@ -14,7 +14,7 @@ HyperSurf开发团队承诺————HyperSurf将采取**永久免费+开源**
 
 
 ## Bug反馈
-因为VelaOS不开放webview，所以只能采用自研 `Tecko-拓擎` 转译层，如果您在使用过程中遇见问题，可向开发者反馈，反馈方式如下
+因为VelaOS不开放webview，所以只能采用 `Tecko-拓擎` 转译层，如果您在使用过程中遇见问题，可向开发者反馈，反馈方式如下
 
 ## 联系和反馈
 1. @Aether空
@@ -25,3 +25,6 @@ HyperSurf开发团队承诺————HyperSurf将采取**永久免费+开源**
 2.@LR.C
    - QQ：3590283241
    - 米坛账号链接：[https://www.bandbbs.cn/members/1397083/]
+   - 
+## 支持与协助
+本项目由米坛社区开源项目支持计划提供支持
