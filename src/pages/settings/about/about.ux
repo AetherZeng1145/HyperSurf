@@ -16,7 +16,7 @@
           <div class="logo-section">
             <image class="app-logo" src="../../../common/logo.png"></image>
             <text class="app-name">HyperSurf 先行预览版</text>
-            <text class="version">版本 v0.2.3</text>
+            <text class="version">版本 v0.2.4</text>
           </div>
         </div>
 
@@ -185,3 +185,4 @@ export default {
   }
 }
 </script>
+
