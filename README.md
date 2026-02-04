@@ -27,4 +27,4 @@ HyperSurf开发团队承诺————HyperSurf将采取**永久免费+开源**
    - 米坛账号链接：[https://www.bandbbs.cn/members/1397083/]
    - 
 ## 支持与协助
-[本项目由米坛社区开源项目支持计划提供支持](https://www.bandbbs.cn/resources/4436/)
+[![本项目由米坛社区开源项目支持计划提供支持](/badge.png “让我去米坛看看这个有趣的玩意”)](https://www.bandbbs.cn/resources/4436/)
