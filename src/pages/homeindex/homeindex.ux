@@ -2,7 +2,7 @@
 <template>
   <div class="page-container">
     <div class="scroll-content">
-      <div class="header">
+      <div class="header" if="{{ isKeyboardHidden }}">
         <text class="app-name">HyperSurf 先行预览版</text>
       </div>
       <div class="search-container">
